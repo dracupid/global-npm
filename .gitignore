@@ -1,0 +1,25 @@
+# Logs
+logs
+log
+*.log
+
+node_modules
+
+# webstorm
+.idea
+
+# no
+.nobone
+.nokit
+
+# coffee-cache
+.coffee
+
+# OSX
+.DS_Store
+
+tmp
+temp
+*.temp
+dist
+

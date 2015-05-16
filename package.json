@@ -1,0 +1,23 @@
+{
+  "name": "global-npm",
+  "version": "0.0.1",
+  "description": "Require global npm as a local node module.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "dracupid <dracupid@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "which": "^1.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dracupid/global-npm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dracupid/global-npm/issues"
+  },
+  "homepage": "https://github.com/dracupid/global-npm#readme",
+  "devDependencies": {}
+}
