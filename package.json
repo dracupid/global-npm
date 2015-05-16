@@ -1,6 +1,6 @@
 {
   "name": "global-npm",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Require global npm as a local node module.",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,9 @@
   "dependencies": {
     "which": "^1.1.1"
   },
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dracupid/global-npm.git"
