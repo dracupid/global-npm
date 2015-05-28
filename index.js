@@ -1,4 +1,5 @@
 "use strict";
+
 var fs = require('fs'),
     path = require('path'),
     which = require('which');
@@ -18,7 +19,10 @@ catch (e) {
     throwNotFoundError();
 }
 
-GLOBAL_NPM_PATH = path.join(GLOBAL_NPM_BIN, process.platform === "win32" ? '../node_modules/npm' : '../..');
+GLOBAL_NPM_PATH = path.join(
+    GLOBAL_NPM_BIN,
+    process.platform === "win32" ? '../node_modules/npm' : '../..'
+);
 
 module.exports = (function (npmPath) {
     try {
@@ -32,5 +36,6 @@ module.exports = (function (npmPath) {
         throwNotFoundError();
     }
 })(GLOBAL_NPM_PATH);
+
 module.exports.GLOBAL_NPM_PATH = GLOBAL_NPM_PATH;
 module.exports.GLOBAL_NPM_BIN = GLOBAL_NPM_BIN;
