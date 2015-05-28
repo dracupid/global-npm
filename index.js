@@ -5,7 +5,7 @@ var fs = require('fs'),
 
 var GLOBAL_NPM_BIN, GLOBAL_NPM_PATH;
 
-function throwNotFoundError() {
+var throwNotFoundError = function throwNotFoundError() {
     var err = new Error("Cannot find module 'npm'");
     err.code = 'MODULE_NOT_FOUND';
     throw err;
