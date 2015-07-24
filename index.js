@@ -10,24 +10,23 @@ var throwNotFoundError = function throwNotFoundError() {
     var err = new Error("Cannot find module 'npm'");
     err.code = 'MODULE_NOT_FOUND';
     throw err;
-}
+};
 
 try {
-    GLOBAL_NPM_BIN = fs.realpathSync(which.sync('npm'));
+    GLOBAL_NPM_BIN = process.env.GLOBAL_NPM_BIN || fs.realpathSync(which.sync('npm'));
 }
 catch (e) {
     throwNotFoundError();
 }
 
-GLOBAL_NPM_PATH = path.join(
+GLOBAL_NPM_PATH = process.env.GLOBAL_NPM_PATH || path.join(
     GLOBAL_NPM_BIN,
     process.platform === "win32" ? '../node_modules/npm' : '../..'
 );
 
-module.exports = (function (npmPath) {
+module.exports = (function () {
     try {
-        var npm = require(npmPath);
-        return npm;
+        return require(GLOBAL_NPM_PATH);
     }
     catch (e) {
         if (e.code !== 'MODULE_NOT_FOUND') {
@@ -35,7 +34,7 @@ module.exports = (function (npmPath) {
         }
         throwNotFoundError();
     }
-})(GLOBAL_NPM_PATH);
+})();
 
 module.exports.GLOBAL_NPM_PATH = GLOBAL_NPM_PATH;
 module.exports.GLOBAL_NPM_BIN = GLOBAL_NPM_BIN;
