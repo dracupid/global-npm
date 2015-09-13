@@ -20,13 +20,18 @@ catch (e) {
 }
 
 GLOBAL_NPM_PATH = process.env.GLOBAL_NPM_PATH || path.join(
-    GLOBAL_NPM_BIN,
-    process.platform === "win32" ? '../node_modules/npm' : '../..'
-);
+        GLOBAL_NPM_BIN,
+        process.platform === "win32" ? '../node_modules/npm' : '../..'
+    );
 
 module.exports = (function () {
     try {
-        return require(GLOBAL_NPM_PATH);
+        var npm = require(GLOBAL_NPM_PATH);
+        if (npm && Object.keys(npm).length > 0) {
+            return require(GLOBAL_NPM_PATH);
+        } else {
+            throwNotFoundError();
+        }
     }
     catch (e) {
         if (e.code !== 'MODULE_NOT_FOUND') {
