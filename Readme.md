@@ -7,6 +7,8 @@ Require global npm as a local node module.
 [![Build Status](https://travis-ci.org/dracupid/global-npm.svg)](https://travis-ci.org/dracupid/global-npm)
 [![Build status](https://ci.appveyor.com/api/projects/status/github/dracupid/global-npm?svg=true)](https://ci.appveyor.com/project/dracupid/global-npm)
 
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 Npm is about 18MB in size now, which is quite a heavy dependency for most modules. Luckily, nearly every node.js/io.js user has a npm installed globally.
 
 However, normally, you can't require a global module directly, unless:

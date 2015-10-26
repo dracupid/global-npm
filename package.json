@@ -4,12 +4,12 @@
   "description": "Require global npm as a local node module.",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "standard && node test.js"
   },
   "author": "dracupid <dracupid@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "which": "^1.1.2"
+    "which": "^1.2.0"
   },
   "files": [
     "index.js"
@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/dracupid/global-npm/issues"
   },
-  "homepage": "https://github.com/dracupid/global-npm#readme"
+  "homepage": "https://github.com/dracupid/global-npm#readme",
+  "devDependencies": {
+    "standard": "^5.3.1"
+  }
 }
