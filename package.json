@@ -1,6 +1,6 @@
 {
   "name": "global-npm",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Require global npm as a local node module.",
   "main": "index.js",
   "scripts": {
