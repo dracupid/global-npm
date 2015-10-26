@@ -21,7 +21,7 @@ clone_depth: 1
 environment:
   matrix:
     - nodejs_version: 0.10
-    - nodejs_version: 2
+    - nodejs_version: 4
 
 cache:
   - node_modules                    # local npm modules
