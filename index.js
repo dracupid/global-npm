@@ -20,8 +20,8 @@ try {
 }
 
 GLOBAL_NPM_PATH = process.env.GLOBAL_NPM_PATH || path.join(
-  GLOBAL_NPM_BIN,
-  process.platform === 'win32' ? '../node_modules/npm' : '../..'
+    GLOBAL_NPM_BIN,
+    process.platform === 'win32' ? '../node_modules/npm' : '../..'
 )
 
 module.exports = (function () {
