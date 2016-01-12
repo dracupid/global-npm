@@ -9,7 +9,7 @@
   "author": "dracupid <dracupid@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "which": "^1.2.0"
+    "which": "^1.2.1"
   },
   "files": [
     "index.js"
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/dracupid/global-npm#readme",
   "devDependencies": {
-    "standard": "^5.4.0"
+    "standard": "^5.4.1"
   }
 }
