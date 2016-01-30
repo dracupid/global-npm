@@ -9,7 +9,7 @@
   "author": "dracupid <dracupid@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "which": "^1.2.1"
+    "which": "latest"
   },
   "files": [
     "index.js"
