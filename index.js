@@ -7,7 +7,7 @@ var which = require('which')
 var GLOBAL_NPM_BIN
 var GLOBAL_NPM_PATH
 
-var throwNotFoundError = function throwNotFoundError () {
+var throwNotFoundError = function () {
   var err = new Error("Cannot find module 'npm'")
   err.code = 'MODULE_NOT_FOUND'
   throw err
@@ -27,17 +27,15 @@ GLOBAL_NPM_PATH = process.env.GLOBAL_NPM_PATH || path.join(
 module.exports = (function () {
   try {
     var npm = require(GLOBAL_NPM_PATH)
-    if (npm && Object.keys(npm).length > 0) {
-      return require(GLOBAL_NPM_PATH)
-    } else {
-      throwNotFoundError()
+    if (npm && Object.keys(npm).length) {
+      return npm
     }
   } catch (e) {
     if (e.code !== 'MODULE_NOT_FOUND') {
       throw e
     }
-    throwNotFoundError()
   }
+  throwNotFoundError()
 })()
 
 module.exports.GLOBAL_NPM_PATH = GLOBAL_NPM_PATH
