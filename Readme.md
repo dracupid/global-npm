@@ -23,7 +23,7 @@ If your module need to depend on `npm`, why not just use the global one?
 
 ## Usage
 ```javascript
-var npm = require('global-npm');
+var npm = require('global-npm')
 ```
 
 **If the version of npm counts, please use [semver](https://github.com/npm/node-semver) to check it by yourself.**
