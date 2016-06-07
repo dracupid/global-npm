@@ -19,14 +19,14 @@ However, normally, you can't require a global module directly, unless:
 
 The last one should be the best way for a third-party module.
 
-If your module need to depend on `npm`, why not just use the global one?
+If your module needs to depend on `npm`, why not just use the global one?
 
 ## Usage
 ```javascript
 var npm = require('global-npm')
 ```
 
-**If the version of npm counts, please use [semver](https://github.com/npm/node-semver) to check it by yourself.**
+**If the version of npm counts, please use [semver](https://github.com/npm/node-semver) to check `npm.version` by yourself.**
 
 ## License
 MIT@Dracupid
