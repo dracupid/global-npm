@@ -14,7 +14,17 @@ var throwNotFoundError = function () {
 }
 
 try {
-  GLOBAL_NPM_BIN = process.env.GLOBAL_NPM_BIN || fs.realpathSync(which.sync('npm'))
+  var ENV = process.env
+  if (ENV.GLOBAL_NPM_BIN) {
+    GLOBAL_NPM_BIN = ENV.GLOBAL_NPM_BIN
+  } else if (ENV.npm_execpath) {
+    GLOBAL_NPM_BIN = ENV.npm_execpath
+  } else if ((ENV.NODENV_VERSION === 'system') && ENV.NODENV_ROOT) {
+    var trimPath = ENV.PATH.replace(path.join(ENV.NODENV_ROOT, 'shims'), '')
+    GLOBAL_NPM_BIN = fs.realpathSync(which.sync('npm', { path: trimPath }))
+  } else {
+    GLOBAL_NPM_BIN = fs.realpathSync(which.sync('npm'))
+  }
 } catch (e) {
   throwNotFoundError()
 }

@@ -1,3 +1,4 @@
+delete process.env.npm_execpath // force not using npm env variable
 var npm = require('./')
 var assert = require('assert')
 
