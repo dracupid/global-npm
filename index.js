@@ -18,20 +18,30 @@ try {
   if (ENV.GLOBAL_NPM_BIN) {
     GLOBAL_NPM_BIN = ENV.GLOBAL_NPM_BIN
   } else if (ENV.npm_execpath) {
+    // run by npm scripts
     GLOBAL_NPM_BIN = ENV.npm_execpath
   } else if ((ENV.NODENV_VERSION === 'system') && ENV.NODENV_ROOT) {
+    // nodenv
     var trimPath = ENV.PATH.replace(path.join(ENV.NODENV_ROOT, 'shims'), '')
     GLOBAL_NPM_BIN = fs.realpathSync(which.sync('npm', { path: trimPath }))
   } else {
+    // which
     GLOBAL_NPM_BIN = fs.realpathSync(which.sync('npm'))
   }
 } catch (e) {
   throwNotFoundError()
 }
 
+var hasSymbolLink = process.platform !== 'win32'
+
+if (path.basename(GLOBAL_NPM_BIN) === 'npm-cli.js') {
+  // NVM
+  hasSymbolLink = true
+}
+
 GLOBAL_NPM_PATH = process.env.GLOBAL_NPM_PATH || path.join(
   GLOBAL_NPM_BIN,
-  process.platform === 'win32' ? '../node_modules/npm' : '../..'
+  !hasSymbolLink ? '../node_modules/npm' : '../..'
 )
 
 module.exports = (function () {

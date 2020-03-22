@@ -4,6 +4,7 @@
   "description": "Require global npm as a local node module.",
   "main": "index.js",
   "scripts": {
+    "npm_execpath": "echo $npm_execpath",
     "test": "standard && node test.js"
   },
   "author": "dracupid <dracupid@gmail.com>",
