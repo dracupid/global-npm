@@ -44,19 +44,24 @@ GLOBAL_NPM_PATH = process.env.GLOBAL_NPM_PATH || path.join(
   !hasSymbolLink ? '../node_modules/npm' : '../..'
 )
 
-module.exports = (function () {
+module.exports = (function requireNPM (npmPath) {
+  GLOBAL_NPM_PATH = npmPath
   try {
-    var npm = require(GLOBAL_NPM_PATH)
+    var npm = require(npmPath)
     if (npm && Object.keys(npm).length) {
       return npm
     }
   } catch (e) {
-    if (e.code !== 'MODULE_NOT_FOUND') {
+    if (e.message.indexOf('The programmatic API was removed') >= 0) {
+      // for npm >= 8. Maybe programmatic api via require('npm') is no longer available
+      // https://github.com/npm/cli/pull/3762
+      return requireNPM(path.join(npmPath, 'lib/npm.js'))
+    } else if (e.code !== 'MODULE_NOT_FOUND') {
       throw e
     }
   }
   throwNotFoundError()
-})()
+})(GLOBAL_NPM_PATH)
 
 module.exports.GLOBAL_NPM_PATH = GLOBAL_NPM_PATH
 module.exports.GLOBAL_NPM_BIN = GLOBAL_NPM_BIN
