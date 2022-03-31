@@ -17,7 +17,7 @@ try {
   var ENV = process.env
   if (ENV.GLOBAL_NPM_BIN) {
     GLOBAL_NPM_BIN = ENV.GLOBAL_NPM_BIN
-  } else if (ENV.npm_execpath) {
+  } else if (ENV.npm_execpath && !~ENV.npm_execpath.indexOf('yarn')) {
     // run by npm scripts
     GLOBAL_NPM_BIN = ENV.npm_execpath
   } else if ((ENV.NODENV_VERSION === 'system') && ENV.NODENV_ROOT) {
@@ -44,7 +44,7 @@ GLOBAL_NPM_PATH = process.env.GLOBAL_NPM_PATH || path.join(
   !hasSymbolLink ? '../node_modules/npm' : '../..'
 )
 
-module.exports = (function requireNPM (npmPath) {
+module.exports = (function requireNPM(npmPath) {
   GLOBAL_NPM_PATH = npmPath
   try {
     var npm = require(npmPath)
